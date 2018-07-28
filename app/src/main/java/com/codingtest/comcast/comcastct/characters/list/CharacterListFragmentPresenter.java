@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -37,7 +38,7 @@ public class CharacterListFragmentPresenter implements CharacterListFragmentCont
 
         mService.getAnswers(characterGroupName, "json")
                 .subscribeOn(Schedulers.io())
-                //.observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<CharacterResponse>() {
                     @Override
                     public void onCompleted() {

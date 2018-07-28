@@ -6,25 +6,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Load toolbar -->
+    <include
+        layout="@layout/character_list_toolbar"
+        android:id="@+id/character_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <fragment
         android:id="@+id/two_pane_character_list_fragment"
         android:name="com.codingtest.comcast.comcastct.characters.list.CharacterListFragment"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintWidth_percent="0.4"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/character_toolbar"
+        app:layout_constraintWidth_percent="0.4" />
 
     <fragment
         android:id="@+id/two_pane_character_detail_fragment"
         android:name="com.codingtest.comcast.comcastct.characters.detail.CharacterDetailFragment"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintWidth_percent="0.6"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/two_pane_character_list_fragment"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/character_toolbar"
+        app:layout_constraintWidth_percent="0.6" />
+        <!-- app:layout_constraintStart_toEndOf="@+id/two_pane_character_list_fragment" -->
+
 
 </android.support.constraint.ConstraintLayout>

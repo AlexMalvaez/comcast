@@ -1,5 +1,8 @@
 package com.codingtest.comcast.comcastct.utils;
 
+import android.content.Context;
+import android.content.res.Configuration;
+
 import com.codingtest.comcast.comcastct.data.remote.RetrofitClient;
 import com.codingtest.comcast.comcastct.data.remote.services.CharacterService;
 
@@ -13,4 +16,5 @@ public class APIUtils {
     public static CharacterService getSOService() {
         return RetrofitClient.getClient(BASE_URL).create(CharacterService.class);
     }
+
 }

@@ -25,11 +25,26 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
         mCharacterListener = characterListener;
     }
 
+    public void updateCharacters(List<Character> characterList) {
+        mCharacterList = characterList;
+        notifyDataSetChanged();
+    }
+
+    public List<Character> getCharacterList() {
+        return mCharacterList;
+    }
+
+    public Character getCharacter(int adapterPosition){
+        Log.i("Position: ", Integer.toString(adapterPosition));
+        Log.i("CharacterListSize: ", Integer.toString(mCharacterList.size()));
+
+        return mCharacterList.get(adapterPosition);
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View characterView = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+        View characterView = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
         ViewHolder viewHolder = new ViewHolder(characterView, this.mCharacterListener);
 
         return viewHolder;
@@ -43,18 +58,6 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
     @Override
     public int getItemCount() {
         return mCharacterList.size();
-    }
-
-    public void updateCharacters(List<Character> characterList) {
-        mCharacterList = characterList;
-        notifyDataSetChanged();
-    }
-
-    public Character getCharacter(int adapterPosition){
-        Log.i("Position: ", Integer.toString(adapterPosition));
-        Log.i("CharacterListSize: ", Integer.toString(mCharacterList.size()));
-
-        return mCharacterList.get(adapterPosition);
     }
 
     //Interface for sending the Character Info once it has been clicked on a character list's title

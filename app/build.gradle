@@ -16,6 +16,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "default"
+    productFlavors {
+
+        simpsons{
+            applicationId "com.codingtest.comcast.comcastct.simpsons"
+            buildConfigField("String", "Q_PARAMETER_VALUE", "\"simpsons characters\"")
+        }
+
+        wire {
+            applicationId "com.codingtest.comcast.comcastct.wire"
+            buildConfigField("String", "Q_PARAMETER_VALUE", "\"the wire characters\"")
+        }
+
+    }
 }
 
 dependencies {

@@ -29,9 +29,24 @@ public class CharacterGridAdapter extends RecyclerView.Adapter<CharacterGridAdap
         mCharacterListener = characterListener;
     }
 
+    public void updateCharacters(List<Character> characterList) {
+        mCharacterList = characterList;
+        notifyDataSetChanged();
+    }
+
+    public List<Character> getCharacterList() {
+        return mCharacterList;
+    }
+
+    public Character getCharacter(int adapterPosition){
+        Log.i("Position: ", Integer.toString(adapterPosition));
+        Log.i("CharacterListSize: ", Integer.toString(mCharacterList.size()));
+
+        return mCharacterList.get(adapterPosition);
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         Log.i("Creating", "Grid Card");
 
@@ -57,28 +72,14 @@ public class CharacterGridAdapter extends RecyclerView.Adapter<CharacterGridAdap
                 .load(chr.getUlr())
                 .placeholder(circularProgressDrawable)
                 .error(R.drawable.ic_not_found)
-                //.override(120, 160)
                 .fitCenter()
                 .into(holder.ivCharacterImage);
 
-        //holder.ivCharacterImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
 
     @Override
     public int getItemCount() {
         return mCharacterList.size();
-    }
-
-    public void updateCharacters(List<Character> characterList) {
-        mCharacterList = characterList;
-        notifyDataSetChanged();
-    }
-
-    public Character getCharacter(int adapterPosition){
-        Log.i("Position: ", Integer.toString(adapterPosition));
-        Log.i("CharacterListSize: ", Integer.toString(mCharacterList.size()));
-
-        return mCharacterList.get(adapterPosition);
     }
 
     //Interface for sending the Character Info once it has been clicked on a character list's title

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ComcastCT</string>
+    <string name="app_name">Character</string>
+    <string name="unknown_character_name">Unknown Character Name</string>
+    <string name="description">Description</string>
 </resources>

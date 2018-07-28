@@ -1,9 +1,10 @@
 package com.codingtest.comcast.comcastct.characters.detail;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.widget.CircularProgressDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class CharacterDetailFragment extends Fragment implements CharacterDetail
 
     @Override
     public void onAttach(Activity activity) {
+        Log.i("CharacterDetailFragment", "onAttach");
         super.onAttach(activity);
         setPresenter(new CharacterDetailFragmentPresenter(this));
     }
@@ -39,6 +41,7 @@ public class CharacterDetailFragment extends Fragment implements CharacterDetail
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.i("CharacterDetailFragment", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_character_detail_panel, container, false);
         Log.i("Detail Fragment", "Detail Fragment");
         return view;
@@ -46,6 +49,7 @@ public class CharacterDetailFragment extends Fragment implements CharacterDetail
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        Log.i("CharacterDetailFragment", "onViewCreated");
         super.onViewCreated(view, savedInstanceState);
         mIVCharacterImage = (ImageView) view.findViewById(R.id.iv_character_image);
         mTVNAme =(TextView) view.findViewById(R.id.tv_name);
@@ -61,7 +65,7 @@ public class CharacterDetailFragment extends Fragment implements CharacterDetail
         mTVNAme.setText(character.getTitle());
         mTVDescription.setText(character.getDescription());
 
-        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(getContext());
+        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(getActivity().getApplicationContext());
         circularProgressDrawable.setStrokeWidth(5f);
         circularProgressDrawable.setCenterRadius(40f);
         circularProgressDrawable.start();
