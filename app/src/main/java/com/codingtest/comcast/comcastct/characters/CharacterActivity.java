@@ -23,7 +23,6 @@ public class CharacterActivity extends AppCompatActivity implements CharacterLis
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("CharacterActivity", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -34,9 +33,8 @@ public class CharacterActivity extends AppCompatActivity implements CharacterLis
 
     @Override
     protected void onDestroy() {
-        Log.i("CharacterActivity", "onDestroy");
-        //CharacterListFragment characterListFragment = getCharacterListFragment();
-        //characterListFragment = null;
+        CharacterListFragment characterListFragment = getCharacterListFragment();
+        characterListFragment = null;
         super.onDestroy();
     }
 

@@ -33,7 +33,6 @@ public class CharacterDetailFragment extends Fragment implements CharacterDetail
 
     @Override
     public void onAttach(Activity activity) {
-        Log.i("CharacterDetailFragment", "onAttach");
         super.onAttach(activity);
         setPresenter(new CharacterDetailFragmentPresenter(this));
     }
@@ -41,15 +40,12 @@ public class CharacterDetailFragment extends Fragment implements CharacterDetail
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i("CharacterDetailFragment", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_character_detail_panel, container, false);
-        Log.i("Detail Fragment", "Detail Fragment");
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i("CharacterDetailFragment", "onViewCreated");
         super.onViewCreated(view, savedInstanceState);
         mIVCharacterImage = (ImageView) view.findViewById(R.id.iv_character_image);
         mTVNAme =(TextView) view.findViewById(R.id.tv_name);

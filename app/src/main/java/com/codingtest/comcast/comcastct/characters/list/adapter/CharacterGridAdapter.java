@@ -39,16 +39,11 @@ public class CharacterGridAdapter extends RecyclerView.Adapter<CharacterGridAdap
     }
 
     public Character getCharacter(int adapterPosition){
-        Log.i("Position: ", Integer.toString(adapterPosition));
-        Log.i("CharacterListSize: ", Integer.toString(mCharacterList.size()));
-
         return mCharacterList.get(adapterPosition);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        Log.i("Creating", "Grid Card");
 
         View characterView = LayoutInflater.from(parent.getContext()).inflate(R.layout.character_grid_card_view, null);
         ViewHolder viewHolder = new ViewHolder(characterView, this.mCharacterListener);

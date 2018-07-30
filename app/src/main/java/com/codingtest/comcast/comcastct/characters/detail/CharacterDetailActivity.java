@@ -24,7 +24,6 @@ public class CharacterDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i("CharacterDetailActivity", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_detail);
 
@@ -41,7 +40,6 @@ public class CharacterDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        Log.i("CharacterDetailActivity", "onStart");
         super.onStart();
         mCharacterDetailFragment = (CharacterDetailFragment) getFragmentManager().findFragmentById(R.id.char_detail_fragment);
         mCharacterDetailFragment.updateCharacterDetails(mCharacterSelected);

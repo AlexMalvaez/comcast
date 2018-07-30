@@ -35,9 +35,6 @@ public class CharacterListAdapter extends RecyclerView.Adapter<CharacterListAdap
     }
 
     public Character getCharacter(int adapterPosition){
-        Log.i("Position: ", Integer.toString(adapterPosition));
-        Log.i("CharacterListSize: ", Integer.toString(mCharacterList.size()));
-
         return mCharacterList.get(adapterPosition);
     }
 

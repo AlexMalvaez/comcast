@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 
 import com.codingtest.comcast.comcastct.BuildConfig;
 import com.codingtest.comcast.comcastct.R;
-import com.codingtest.comcast.comcastct.characters.list.adapter.CharacterAdapter;
 import com.codingtest.comcast.comcastct.characters.list.adapter.CharacterGridAdapter;
 import com.codingtest.comcast.comcastct.characters.list.adapter.CharacterListAdapter;
 import com.codingtest.comcast.comcastct.data.model.Character;
@@ -38,7 +37,6 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
 
     private RecyclerView mRecyclerViewCharacter;
     private RecyclerView.ItemDecoration mItemDecoration;
-    //private CharacterAdapter mCharacterAdapter;
     private CharacterGridAdapter mCharacterGridAdapter;
     private CharacterListAdapter mCharacterListAdapter;
 
@@ -51,7 +49,6 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
 
     @Override
     public void onAttach(Activity activity) {
-        Log.i("CharacterListFragment", "onAttach");
         super.onAttach(activity);
         mOnCharacterTitleSelectedListener = (OnCharacterTitleSelectedListener) activity;
         setPresenter(new CharacterListFragmentPresenter(this));
@@ -59,40 +56,26 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i("CharacterListFragment", "onCreate");
         super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i("CharacterListFragment", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_character_list_panel, container, false);
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i("CharacterListFragment", "onViewCreated");
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerViewCharacter = (RecyclerView) view.findViewById(R.id.rvCharacterList);
-
-       /* mCharacterAdapter = new CharacterAdapter(new ArrayList<Character>(), new CharacterAdapter.PostCharacterListener() {
-            @Override
-            public void onPostClick(Character character) {
-                mOnCharacterTitleSelectedListener.onCharacterTitleSelected(character);
-            }
-        }, CharacterAdapter.ROW_TYPE);
-
-        */
-
     }
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        Log.i("CharacterListFragment", "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
         mCharacterListAdapter = new CharacterListAdapter(new ArrayList<Character>(), new CharacterListAdapter.PostCharacterListener() {
             @Override
@@ -111,7 +94,6 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
 
     @Override
     public void onDestroy() {
-        Log.i("CharacterListFragment", "onDestroy");
         super.onDestroy();
         setPresenter(null);
         mOnCharacterTitleSelectedListener = null;
@@ -119,7 +101,6 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
 
     @Override
     public void onDetach() {
-        Log.i("CharacterListFragment", "onDestroy");
         super.onDetach();
     }
 
@@ -132,7 +113,6 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
         if(isCharacterList) {
             mCharacterListAdapter.updateCharacters(characterList);
             mCharacterListAdapter.notifyDataSetChanged();
-            //mCharacterListAdapter.notifyItemRangeChanged(0, characterList.size());
         } else {
             mCharacterGridAdapter.updateCharacters(characterList);
             mCharacterGridAdapter.notifyDataSetChanged();
@@ -158,7 +138,6 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
         mRecyclerViewCharacter.removeItemDecoration(mItemDecoration);
         mRecyclerViewCharacter.setAdapter(mCharacterGridAdapter);
         mCharacterGridAdapter.notifyDataSetChanged();
-        //mCharacterGridAdapter.notifyItemRangeChanged(0,characterList.size());
 
         isCharacterList = false;
     }
@@ -178,7 +157,6 @@ public class CharacterListFragment extends Fragment implements CharacterListFrag
         mRecyclerViewCharacter.addItemDecoration(mItemDecoration);
         mRecyclerViewCharacter.setAdapter(mCharacterListAdapter);
         mCharacterListAdapter.notifyDataSetChanged();
-        //mCharacterListAdapter.notifyItemRangeChanged(0,characterList.size());
 
         isCharacterList = true;
     }
